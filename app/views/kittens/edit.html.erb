@@ -1,0 +1,11 @@
+<h1>Edit Kitten</h1>
+<%= render 'form' %>
+<%= link_to 'Show', @kitten%> |
+<%= link_to "Delete this kitten", @kitten, method: :delete %> |
+<%= link_to 'Back', kittens_path %>
+
+<% if flash[:notice] %>
+  <div class="flash notice"><%= flash[:notice] %></div>
+<% elsif flash[:error] %>
+  <div class="flash error"><%= flash[:error] %></div>
+<% end %>

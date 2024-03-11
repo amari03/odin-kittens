@@ -18,6 +18,7 @@ class KittensController < ApplicationController
     if @kitten.save
       redirect_to @kitten, notice: 'Kitten was successfully created.'
     else
+      flash.now[:error] = 'Oops! Something went wrong while creating. Try again :('
       render :new
     end
   end
@@ -29,6 +30,7 @@ class KittensController < ApplicationController
     if @kitten.update(kitten_params)
       redirect_to @kitten, notice: 'Kitten was successfully updated.'
     else
+      flash.now[:error] = 'Oops! Something went wrong while updating. Try again :p'
       render :edit
     end
   end
@@ -44,6 +46,6 @@ class KittensController < ApplicationController
     end
 
     def kitten_params
-      params.require(:kitten).permit(:name, :age, :breed)
+      params.require(:kitten).permit(:name, :age, :cuteness, :softness)
     end
 end

@@ -1,2 +1,20 @@
-<h1>Kittens#index</h1>
-<p>Find me in app/views/kittens/index.html.erb</p>
+<h1>All Kittens</h1>
+<ul>
+  <% @kittens.each do |kitten| %>
+    <li>
+      <li><%= kitten.name %> - <%= kitten.age %> years old - <%= kitten.cuteness %> - <%= kitten.softness %></li>
+      <%= link_to 'Show', kitten %> |
+      <%= link_to 'Edit', edit_kitten_path(kitten) %> |
+      <%= link_to 'Delete', kitten, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Kitten', new_kitten_path %>
+
+<% if flash[:notice] %>
+  <div class="flash notice"><%= flash[:notice] %></div>
+<% elsif flash[:error] %>
+  <div class="flash error"><%= flash[:error] %></div>
+<% end %>
+ 

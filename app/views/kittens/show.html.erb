@@ -1,0 +1,17 @@
+<h1><%= @kitten.name %></h1>
+
+<div>
+<p><strong>Age:</strong> <%= @kitten.age %> years old</p>
+<p><strong>Cuteness:</strong> <%= @kitten.cuteness %></p>
+<p><strong>Softness:</strong> <%= @kitten.softness %></p>
+  <%= link_to "Edit this kitten", edit_kitten_path(@kitten) %> |
+  <%= link_to "Back to kittens", kittens_path %> |
+
+  <%= link_to "Delete this kitten", @kitten, method: :delete %>
+</div>
+
+<% if flash[:notice] %>
+  <div class="flash notice"><%= flash[:notice] %></div>
+<% elsif flash[:error] %>
+  <div class="flash error"><%= flash[:error] %></div>
+<% end %>
